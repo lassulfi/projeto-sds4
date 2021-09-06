@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+  frontend:
+    build: ./frontend
+    entrypoint: ./.docker/entrypoint.sh
+    container_name: dsvendas_frontend
+    ports:
+      - 3000:3000
+    volumes:
+      - ./frontend:/home/node/app
+    extra_hosts:
+      - "host.docker.internal:172.17.0.1"
+
+  # backend:
+
+  # db:
+
+  # pgadmin:
