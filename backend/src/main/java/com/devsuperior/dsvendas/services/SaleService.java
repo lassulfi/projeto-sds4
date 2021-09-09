@@ -1,8 +1,6 @@
 package com.devsuperior.dsvendas.services;
 
 import java.util.List;
-import java.util.stream.Collectors;
-
 import com.devsuperior.dsvendas.dtos.SaleDTO;
 import com.devsuperior.dsvendas.dtos.SaleSuccessDTO;
 import com.devsuperior.dsvendas.dtos.SaleSumDTO;

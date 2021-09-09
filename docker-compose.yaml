@@ -4,7 +4,7 @@ services:
   frontend:
     build: ./frontend
     entrypoint: ./.docker/entrypoint.sh
-    container_name: dsvendas_frontend
+    container_name: dsvendas-frontend
     ports:
       - 3000:3000
     volumes:
@@ -14,14 +14,43 @@ services:
 
   backend:
     build: ./backend
-    container_name: dsvendas_backend
+    container_name: dsvendas-backend
     ports:
       - 8080:8080
     volumes:
       - ./backend:/workspace
+    environment: 
+      - APP_PROFILE=dev
+    depends_on: 
+      - db
     extra_hosts:
       - "host.docker.internal:172.17.0.1"
 
-  # db:
-
-  # pgadmin:
+  db:
+    build: .docker/postgres
+    container_name: dsvendas-db
+    restart: always
+    tty: true
+    volumes:
+      - ./.docker/dbdata:/var/lib/postgresql/data
+      - ./.docker/postgres:/docker-entrypoint-initdb.d
+    ports: 
+      - 5432:5432
+    environment: 
+      - POSTGRES_PASSWORD=1234567
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=dsvendas
+    extra_hosts:
+      - "host.docker.internal:172.17.0.1"
+    
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: dsvendas-pgadmin
+    tty: true
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@user.com
+      - PGADMIN_DEFAULT_PASSWORD=admin
+    ports:
+      - 9000:80
+    extra_hosts:
+    - "host.docker.internal:172.17.0.1"
