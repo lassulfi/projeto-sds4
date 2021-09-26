@@ -62,11 +62,18 @@ O script init.sql tem a função de realizar o seed no banco de dados Postgres a
 
 - Backend
     - [] Implementar testes no backend para a arquitetura em camadas
+    - [] Implementar Swagger2
     - [] Alterar a arquitetura do backend para arquitetura Ports & Adapters (hexagonal)
     - [] Implementar os testes para o novo padrão arquitetural
     - [] Corrigir container para container de desenvolvimento (hoje o Dockerfile) gera um container de produção e não é possível que, ao atualizar o projeto, as alterações reflitam em tempo de execução **dica: estudar o devcontainer java gerado pela extensão remote container do VSCode**)
     - [] Implementar segurança
+    - [] Implementar o cadastro de vendedores
+    - [] Implementar o cadastro de vendas
+    - [] Implementar login
 
 - Frontend:
     - [] Incluir o arquivo .env para armazenar as variáveis de ambiente
     - [] Isolar componentes das libs. Por exemplo, o componente BarChart não deve chamar diretamente a biblioteca do axios. Isso pode ser feito através da abstração das libs para um outro módulo
+    - [] Implementar login
+    - [] Implementar formulario de cadastro de vendedores
+    - [] Implementar formulario de cadastro e vendas
