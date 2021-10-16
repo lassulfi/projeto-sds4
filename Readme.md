@@ -61,7 +61,7 @@ O script init.sql tem a função de realizar o seed no banco de dados Postgres a
 ## TODOS
 
 - Backend
-    - [] Implementar testes no backend para a arquitetura em camadas
+    - [X] Implementar testes no backend para a arquitetura em camadas
     - [] Implementar Swagger2
     - [] Alterar a arquitetura do backend para arquitetura Ports & Adapters (hexagonal)
     - [] Implementar os testes para o novo padrão arquitetural
