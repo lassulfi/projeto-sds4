@@ -5,6 +5,7 @@ import com.devsuperior.dsvendas.dtos.SaleDTO;
 import com.devsuperior.dsvendas.dtos.SaleSuccessDTO;
 import com.devsuperior.dsvendas.dtos.SaleSumDTO;
 import com.devsuperior.dsvendas.entities.Sale;
+import com.devsuperior.dsvendas.exceptions.InternalServerErrorException;
 import com.devsuperior.dsvendas.repositories.SaleRepository;
 import com.devsuperior.dsvendas.repositories.SellerRepository;
 
@@ -25,19 +26,38 @@ public class SaleService {
 
     @Transactional(readOnly = true)
     public Page<SaleDTO> findAll(Pageable pageable) {
-        sellerRepository.findAll();
+        Page<SaleDTO> page;
+        try {
+            sellerRepository.findAll();
+    
+            Page<Sale> result = repository.findAll(pageable);
+            page = result.map(sale -> new SaleDTO(sale));
+        } catch (Exception e) {
+            throw new InternalServerErrorException("Generic Exception");
+        }
 
-        Page<Sale> result = repository.findAll(pageable);
-        return result.map(sale -> new SaleDTO(sale));
+        return page;
     }
 
     @Transactional(readOnly = true)
     public List<SaleSumDTO> amountGroupedBySeller() {
-        return repository.amountGroupedBySeller();
+        List <SaleSumDTO> result;
+        try {
+            result = repository.amountGroupedBySeller();
+        } catch (Exception e) {
+            throw new InternalServerErrorException("Generic Exception");
+        }
+        return result;
     }
 
     @Transactional(readOnly = true)
     public List<SaleSuccessDTO> successGroupedBySeller() {
-        return repository.successGroupedBySeller();
+        List <SaleSuccessDTO> result;
+        try {
+            result = repository.successGroupedBySeller();
+        } catch (Exception e) {
+            throw new InternalServerErrorException("Generic Exception");
+        }
+        return result;
     }
 }
