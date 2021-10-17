@@ -4,11 +4,18 @@ import java.io.Serializable;
 
 import com.devsuperior.dsvendas.entities.Seller;
 
+import io.swagger.annotations.ApiModelProperty;
+
 public class SaleSuccessDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    @ApiModelProperty(name = "Seller name", value = "John Doe")
     private String name;
+
+    @ApiModelProperty(name = "Total number of establishments visited by the seller", value = "498")
     private Long visited;
+
+    @ApiModelProperty(name = "Total number of deals by the seller", value = "622")
     private Long deals;
     
     public SaleSuccessDTO() {

@@ -5,13 +5,24 @@ import java.time.LocalDate;
 
 import com.devsuperior.dsvendas.entities.Sale;
 
+import io.swagger.annotations.ApiModelProperty;
+
 public class SaleDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    @ApiModelProperty(value="Sale ID", example = "99")
     private Long id;
+    
+    @ApiModelProperty(value="number of visits made by a seller", example = "1000")
     private Integer visited;
+    
+    @ApiModelProperty(value = "number of deals closed by a seller", example = "50")
     private Integer deals;
+    
+    @ApiModelProperty(value = "total amount sold", example = "550.00")
     private Double amount;
+
+    @ApiModelProperty(value = "Date of the sale", example = "01-01-2021")
     private LocalDate date;
 
     private SellerDTO seller;

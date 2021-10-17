@@ -4,10 +4,15 @@ import java.io.Serializable;
 
 import com.devsuperior.dsvendas.entities.Seller;
 
+import io.swagger.annotations.ApiModelProperty;
+
 public class SellerDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    @ApiModelProperty(value = "Seller id", example = "99")
     private Long id;
+
+    @ApiModelProperty(value = "Seller name", example = "John Doe")
     private String name;
 
     public SellerDTO() {

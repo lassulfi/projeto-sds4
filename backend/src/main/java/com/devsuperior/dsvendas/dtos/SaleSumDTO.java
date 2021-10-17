@@ -4,10 +4,15 @@ import java.io.Serializable;
 
 import com.devsuperior.dsvendas.entities.Seller;
 
+import io.swagger.annotations.ApiModelProperty;
+
 public class SaleSumDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    @ApiModelProperty(name = "Seller name", value = "John Doe")
     private String name;
+
+    @ApiModelProperty(name = "Sum of all sales by seller", value = "1599.99")
     private Double sum;
     
     public SaleSumDTO() {
